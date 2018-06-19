@@ -24,12 +24,14 @@ while True:
 			total_haikus+=1
 		print("\rTotal haikus downloaded: %d"%total_haikus,end="\r")
 		if len(haiku_buffer)>buffer_size: haiku_buffer=flush_buffer(haiku_buffer,dest)
-
 	except Exception as e:
 		print ("Caught exception: ",e)
 		print ("Flushing haiku buffer...")
 		flush_buffer(haiku_buffer,dest)
 		print ("Done.")
+	index+=1
+
+	if index>=1747: break
 
 flush_buffer(haiku_buffer,dest)
 print("\n\nDone.")
