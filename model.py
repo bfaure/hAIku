@@ -23,7 +23,7 @@ print("Total characters: %d"%n_chars)
 print("Total vocab: 	 %d"%n_vocab)
 
 # prepare the dataset of input to output pairs encoded as integers
-seq_length=9
+seq_length=30
 dataX=[]
 dataY=[]
 lines=raw_text.split('\n')
@@ -48,14 +48,16 @@ y=np_utils.to_categorical(dataY)
 
 # define LSTM model
 model=Sequential()
-model.add(LSTM(256, input_shape=(X.shape[1], X.shape[2])))
+model.add(LSTM(256, input_shape=(X.shape[1], X.shape[2]),return_sequences=True))
+model.add(Dropout(0.2))
+model.add(LSTM(256))
 model.add(Dropout(0.2))
 model.add(Dense(y.shape[1], activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 
 # define the checkpoint
-filepath="weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
+filepath="weights-improvement-{epoch:02d}-{loss:.4f}-bigger.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
