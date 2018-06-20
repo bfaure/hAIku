@@ -23,7 +23,7 @@ print("Total characters: %d"%n_chars)
 print("Total vocab: 	 %d"%n_vocab)
 
 # prepare the dataset of input to output pairs encoded as integers
-seq_length=30
+seq_length=50
 dataX=[]
 dataY=[]
 lines=raw_text.split('\n')
@@ -57,8 +57,8 @@ model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 
 # define the checkpoint
-filepath="weights-improvement-{epoch:02d}-{loss:.4f}-bigger.hdf5"
-checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
+filepath="weights-improvement-{epoch:02d}-{loss:.4f}-bigger-window={seq_length:02d}.hdf5"
+checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=False, mode='min')
 callbacks_list = [checkpoint]
 
 
