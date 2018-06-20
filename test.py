@@ -23,7 +23,7 @@ n_vocab=len(chars)
 print("Total characters: %d"%n_chars)
 print("Total vocab: 	 %d"%n_vocab)
 
-# prepare the dataset of input to output pairs encoded as integers
+# prepare the dataset of input to output pairs encoded as integers 
 seq_length=30
 dataX=[]
 dataY=[]
