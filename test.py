@@ -57,7 +57,7 @@ model.add(Dense(y.shape[1], activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 # load the network weights
-filename="weights-improvement-28-1.3209-bigger.hdf5"
+filename="weights-improvement-21-1.3339-bigger.hdf5"
 model.load_weights(filename)
 
 int_to_char=dict((i,c) for i,c in enumerate(chars))
